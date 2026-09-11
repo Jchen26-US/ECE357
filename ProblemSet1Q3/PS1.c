@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdio.h>
 
-#define PROGRAM_NAME "kit"
 
 /*ECE-357 Program set 1 question 3
 Implementation of "kit" a cat-like command
@@ -17,21 +16,25 @@ Current known issues
 - handling file named "-o"
 */
 
-int copyTillEOF(int infd, int outfd, char *buf, int lim) //return -1 on read error, return -2 on write error, else return 0
+int copyTillEOF(int infd, int outfd, char *buf, int lim, char* ifilename, char* ofilename) //return -1 on read error, return -2 on write error, else return 0
 {
     int r,w;
-    do {
-        r = read(infd, buf, lim);
-        if (r < 0) {
-            return -1;
-        }
-        if (r > 0) {
+    while ((r = read(infd, buf, lim)) > 0){
+        int writtenbytes = 0;
+        while (writtenbytes < r){ //handles partial writes by looping till either error or writtenbytes = r
             w = write(outfd, buf, r);
-            if (w < 0) {
+            if (w < 0) { //handles write errors
+                fprintf(stderr, "Error writing to %s: %s\n", ofilename, strerror(errno));
                 return -2;
             }
+            writtenbytes += w;
         }
-    } while (r > 0);
+        
+    } 
+    if (r < 0) {
+        fprintf(stderr, "Error reading from %s: %s\n", ifilename, strerror(errno));
+        return -1;
+    }
     return 0;
 }
 
@@ -40,24 +43,20 @@ int main(int argc, char **argv)
     char buf[4096];
 
     int outfd = STDOUT_FILENO;
-    int infd;
-    int opt;
-    int i;
-
-    for (i = 0; i < argc; i++){
-        fprintf(stdout, "arg %s \n", argv[i]);   
-    }
+    int infd, opt, i;
+    char* ifilename;
+    char* ofilename = "stdout";
     
     while ((opt = getopt(argc, argv, "o:")) != -1) { //getopt to handle -o
         switch (opt) {
 
         case 'o':
             outfd = open(optarg, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-            fprintf(stdout, "opened %s for writing\n", optarg); //testing print
             if (outfd < 0) {
                 fprintf(stderr, "Error opening %s for writing: %s\n", optarg, strerror(errno));
                 return -1;
             }
+            ofilename = optarg;
             break;
         default:
             fprintf(stderr, "Usage: kit [-o outfile] infile...\n");
@@ -65,10 +64,10 @@ int main(int argc, char **argv)
         }
     }
 
-    for (i = optind; i < argc; i++) { //parse rest of args "-*" except -o 
-        fprintf(stdout, "opening %s as input\n", argv[i]);
+    for (i = optind; i < argc; i++) { //parse rest of args "-*"
         if (strcmp(argv[i], "-") == 0) {
             infd = STDIN_FILENO;
+            ifilename = "stdin";
         }
         else {
             infd = open(argv[i], O_RDONLY);
@@ -78,8 +77,7 @@ int main(int argc, char **argv)
             }
         }
 
-        if (copyTillEOF(infd, outfd, buf, sizeof(buf)) < 0) {
-            fprintf(stderr, "Error copying %s: %s\n", argv[i], strerror(errno));
+        if (copyTillEOF(infd, outfd, buf, sizeof(buf), ifilename, ofilename) < 0) { // moved error printing to func
             return -1;
         }
 
@@ -90,14 +88,12 @@ int main(int argc, char **argv)
             }
         }
     }
-
-    if (optind == argc) {
-        if (copyTillEOF(STDIN_FILENO, outfd, buf, sizeof(buf)) < 0) {
-            fprintf(stderr, "Error reading stdin: %s\n", strerror(errno));
+    if (optind == argc) { //handles no args input
+        ifilename = "stdin";
+        if (copyTillEOF(STDIN_FILENO, outfd, buf, sizeof(buf), ifilename, ofilename) < 0) {
             return -1;
         }
     }
-
     if (outfd != STDOUT_FILENO) {
         if (close(outfd) < 0) {
             fprintf(stderr, "Error closing output: %s\n",
