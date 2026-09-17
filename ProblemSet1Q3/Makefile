@@ -4,7 +4,7 @@ kit: PS1.c
 samples: kit
         @echo "Sample 1 - input with singular input and output file"
         echo "Sample Input" > input1.txt
-        ./kit.exe -o output1.txt input.txt
+        ./kit -o output1.txt input1.txt
         @echo "Sample 2 - multiple inputs and stdin to stdout"
         echo "Sample Input2" > input2.txt
         echo "Sample Input3" > input3.txt
@@ -12,17 +12,17 @@ samples: kit
         @echo "Sample 3 - input from stdin output from stdout"
         ./kit
         @echo "Error Sample 1 - no input file"
-        -./kit non-existent-file
+        -./kit non-existent-file.txt
         @echo "Error Sample 2 - multiple output files specified"
-        -./kit -o out1 -o out2
+        -./kit -o out1.txt -o out2.txt
         @echo "Error Sample 3 - no permission to read"
-        touch noReadingPerm
-        chmod -r noReadingPerm
-        -./kit noReadingPerm
+        touch noReadingPerm.txt
+        chmod -r noReadingPerm.txt
+        -./kit noReadingPerm.txt
         @echo "Error Sample 4 - no permission to write"
-        touch noWritingPerm
-        chmod -w noWritingPerm
-        -./kit -o noWritingPerm
+        touch noWritingPerm.txt
+        chmod -w noWritingPerm.txt
+        -./kit -o noWritingPerm.txt
 
 
 clean:
