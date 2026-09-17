@@ -38,7 +38,8 @@ int copyTillEOF(int infd, int outfd, char *buf, int lim, char* ifilename, char* 
 
 int main(int argc, char **argv)
 {
-    char buf[4096];
+    char *buf;
+    int bufsize;
     int outfd = STDOUT_FILENO;
     int infd, opt, i;
     char* ifilename;
@@ -59,12 +60,21 @@ int main(int argc, char **argv)
             }
             ofilename = optarg;
             break;
+        case 'b':
+            bufsize = atoi(optarg);
+            if(bufsize <= 0){
+                fprintf(stderr, "Buffer size must be greated than 0");
+                return -1;
+            }
         default:
             fprintf(stderr, "Usage: kit [-o outfile] infile...\n");
             return -1;
         }
     }
-
+    buf = malloc(bufsize); 
+    if (buf == NULL){
+        fprintf(stderr, "Error allocating buffer of size %d: %s\n", bufsize, strerror(errno));
+    }
 
     for (i = optind; i < argc; i++) { //parse rest of args "-*"
         if (strcmp(argv[i], "-") == 0) {
@@ -81,6 +91,7 @@ int main(int argc, char **argv)
         }
 
         if (copyTillEOF(infd, outfd, buf, sizeof(buf), ifilename, ofilename) < 0) { // moved error printing to func
+            free(buf);
             return -1;
         }
 
@@ -105,5 +116,6 @@ int main(int argc, char **argv)
         }
     }
 
+    free(buf);
     return 0;
 }

@@ -1,0 +1,3 @@
+The trend is that throughput sharply increases when buffer size increases until it eventually plateaus. Throughput improves with increasing buffer size as each read()
+and write() call requires a context switch. For small buffer size a 64MB file would require over 64_000_000 read calls and over 64_000_000 write calls. Increasing the buffer
+size decreases the amount of system calls dramatically. However, throughput approaches an asymptotic limit due to hardware limitations such as the memory bandwidth.
