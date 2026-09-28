@@ -17,7 +17,7 @@ samples: kit
 	@echo "Error Sample 2 - multiple output files specified"
 	-./kit -o out1.txt -o out2.txt 
 	@echo "Error Sample 3 - no permission to read"
-	touch noReadingPerm.txt
+	touch noReadingPerm.tx
 	chmod -r noReadingPerm.txt
 	-./kit noReadingPerm.txt
 	@echo "Error Sample 4 - no permission to write"

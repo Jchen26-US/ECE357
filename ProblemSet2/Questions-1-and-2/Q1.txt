@@ -1,0 +1,18 @@
+#Question1
+cd /mnt
+
+mkdir peter
+touch peter/cooper
+mkdir peter/abram
+
+chmod 755 peter/cooper
+chmod 1777 peter/abram
+
+touch peter/abram/hewitt
+chmod 600 peter/abram/hewitt
+
+touch peter/abram/nerken
+chmod 600 peter/abram/nerken
+
+ln peter/abram/nerken albert
+ln -s peter sarah

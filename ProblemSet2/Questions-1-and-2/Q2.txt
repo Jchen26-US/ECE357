@@ -1,0 +1,17 @@
+2)
+A)
+    i)
+        Byte 65536 is the first byte of logical file block 16 as 65536 = 16*4096. The process already has the file open. Thus, the kernel starts from the inode attached to the open file descriptor. It then converts the byte offset into logical block 16 and checks it against the block-map. Since it is block 16, the kernel uses the single-indirect pointer at slot 12. The kernel then follows the pointer to an indirect block (a block with a many block numbers). It then indexes into entry 4 (16-12), reads the data block and copy byes 0-64 into the buffer.
+    ii)
+        With the assumption that the inode nor the file data are in caches, the volume is mounted with the noatime option, and the disk sector size is 4K. There will be 3 disk accesses made which are:
+        1. Reading the block of the inode table which has the file's inode
+        2. Reading the indirect block at slot 12 to get the pointer for block 16
+        3. Reading data block 16 to get the bytes
+    iii)
+        Since st_blocks are measured in 512-byte units. One 4K block results in 8 st_blocks. The bytes through offset 65600 require 17 4K blocks (0 to 16 inclusive). In addition, it requires one single-indirect 4K block. Thus, 144 (8*18) st_blocks are requried.
+B)
+    The command that returns an error is cat R. This is due to the three symlinks that are created. R is linked to ../../Q. This is linked to /mnt/A/S which links back to B/C/R which will throw the error ELOOP "Too many levels of symbolic links". The reason this error is returned is because of the way the links are set up as they are set up in a loop that resolves back to R. More simply, when the program trys to read from R. It reads R -> Q -> S -> R -> ... which eventually hits the maximum amount of links the kernel allows during a pathname lookup.
+C)
+    The filesystem cache mechanism that is affecting the viewing experience is the file data cache. The file data cache is the buffer cache that holds recently read regions of a file's contents in memory. On the first read from the slow disk device the kernel has to wait for the hardware in order to access the data. However, after accessing it the first time it is now stored within the cache. This is what causes the rewind to play much faster as it already exists in memory. After waiting a while and rewinding, the section becomes laggy again as the bytes associated with that section have already been evicted from the cache (and the system will typically evict old data first). Thus, the system must read from the slow disk device again.
+D)
+    The rm command calls the system call "unlink". "unlink" does not destory a file. It removes a pathname that points to its inode and decreases its link count by 1. For Linux systems, a file's disk blocks are not reclaimed until its link count has hit zero and no process is using it. Thus, if there exists another link to the junk file or it is being used making it a ghost file the system is not able to free the space it takes up. As the space is still held by "junk", df -h should not show the space is free.
