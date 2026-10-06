@@ -1,0 +1,18 @@
+a)
+i is a static local variable initialized with a value. It is stored in the data region
+b)
+
+output:
+10
+11
+11
+12
+
+This output occurs because the parent calls f1() initially, prints it then increments it. Then if the fork call succeeds. A child process is created which copies the parents address space. The child proces and the parent both call f1() outside of the if statement. The order of the last three "11,11,12" is not fixed and varies based on the OS.
+The parent prints the 10 and one of the 11s. The child prints the other 11 and the 12
+
+c)
+No. After the fork, either the parent or the child can run first. This means the order of the last 3 lines can vary. The only reqruirement is that child's 11 must come before the child's 12. The 11 from the parrent can appear in position 1 2 or 3
+
+d)
+"echo $?" outputs 255. The child has no children. Thus, wait(&ws) fails and ws remains at -1. Then the child returns (ws>>8)&255 which the parent recieves and does the same operation to return 255 which is held by $?.
