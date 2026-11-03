@@ -1,0 +1,27 @@
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ ./shell.o
+#example comment
+cd ./some/directory
+pwd
+/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3/some/directory
+ls -l >ls.out
+Child process 4055 exited with status 0
+Real: 0.017s User: 0.004s Sys: 0.000s
+cat ls.out
+total 0
+-rwxrwxrwx 1 chenj chenj 0 Oct 15 15:05 fakefile
+-rwxrwxrwx 1 chenj chenj 0 Oct 15 15:05 fakefile.c
+-rwxrwxrwx 1 chenj chenj 0 Oct 15 15:12 ls.out
+Child process 4056 exited with status 0
+Real: 0.007s User: 0.000s Sys: 0.002s
+ls nonExstnet
+ls: cannot access 'nonExstnet': No such file or directory
+Child process 4057 exited with status 2
+Real: 0.004s User: 0.000s Sys: 0.003s
+cd ..
+cd ..
+./testSegFault.sh
+Segmentation fault
+Child process 4058 exited with status 139
+Real: 0.012s User: 0.002s Sys: 0.000s
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ echo $?
+139

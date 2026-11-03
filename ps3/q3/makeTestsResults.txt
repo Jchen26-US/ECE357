@@ -1,0 +1,109 @@
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ make tests
+./test1.sh
+Child process 4719 exited with status 0
+Real: 0.004s User: 0.001s Sys: 0.000s
+Child process 4720 exited with status 0
+Real: 0.005s User: 0.002s Sys: 0.000s
+total 40
+-rwxrwxrwx 1 chenj chenj   267 Oct 15 15:20 Makefile
+-rwxrwxrwx 1 chenj chenj   935 Oct 15 15:13 exampleCommandLineRun.txt
+-rwxrwxrwx 1 chenj chenj  2807 Oct 15 15:20 makeTestsResults.txt
+-rwxrwxrwx 1 chenj chenj  8018 Oct 15 14:44 p3.c
+-rwxrwxrwx 1 chenj chenj 21312 Oct 15 15:13 shell.o
+drwxrwxrwx 1 chenj chenj  4096 Oct 15 15:04 some
+-rwxrwxrwx 1 chenj chenj   308 Oct 15 14:02 test1.sh
+-rwxrwxrwx 1 chenj chenj   638 Oct 15 15:19 test2.sh
+-rwxrwxrwx 1 chenj chenj   282 Oct 15 14:39 testErrors.sh
+-rwxrwxrwx 1 chenj chenj   199 Oct 15 15:02 testRegular.sh
+-rwxrwxrwx 1 chenj chenj    36 Oct 15 15:10 testSegFault.sh
+-rwxrwxrwx 1 chenj chenj    18 Oct 15 15:21 testfile.out
+-rwxrwxrwx 1 chenj chenj    18 Oct 15 15:21 testfile2.out
+-r-xr-xr-x 1 chenj chenj    20 Oct 15 13:57 unreadableScript.sh
+Child process 4721 exited with status 0
+Real: 0.029s User: 0.003s Sys: 0.000s
+make: [Makefile:4: tests] Error 17 (ignored)
+make cleanOut
+make[1]: Entering directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+rm *.out
+make[1]: Leaving directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+./test2.sh
+/tmp
+/home/chenj
+Error opening testfile.out: Permission denied
+Child process 4726 exited with status 1
+Real: 0.000s User: 0.000s Sys: 0.000s
+Error executing lssssssss: No such file or directory
+Child process 4727 exited with status 127
+Real: 0.038s User: 0.001s Sys: 0.000s
+Child process 4728 exited with status 0
+Real: 0.002s User: 0.002s Sys: 0.000s
+Error opening testfile.out: Permission denied
+Child process 4729 exited with status 1
+Real: 0.000s User: 0.000s Sys: 0.000s
+make: [Makefile:6: tests] Error 1 (ignored)
+make cleanOut
+make[1]: Entering directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+rm *.out
+rm: cannot remove '*.out': No such file or directory
+make[1]: *** [Makefile:16: cleanOut] Error 1
+make[1]: Leaving directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+make: [Makefile:7: tests] Error 2 (ignored)
+./testErrors.sh
+Error changing directory: No such file or directory
+cat: ./nonExistentFile: No such file or directory
+Child process 4734 exited with status 1
+Real: 0.002s User: 0.001s Sys: 0.000s
+Error executing nonExistentcommand: No such file or directory
+Child process 4735 exited with status 127
+Real: 0.035s User: 0.002s Sys: 0.000s
+Error parsing redirection >: Missing filename
+Error parsing redirection >: Missing filename
+Error parsing redirection >: Missing filename
+Error parsing redirection >: Missing filename
+Error: Exit status must be an integer
+"Shell is active post errors"
+Child process 4736 exited with status 0
+Real: 0.002s User: 0.000s Sys: 0.000s
+/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3
+make cleanOut
+make[1]: Entering directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+rm *.out
+rm: cannot remove '*.out': No such file or directory
+make[1]: *** [Makefile:16: cleanOut] Error 1
+make[1]: Leaving directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+make: [Makefile:9: tests] Error 2 (ignored)
+./testRegular.sh
+/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3
+Child process 4741 exited with status 0
+Real: 0.004s User: 0.001s Sys: 0.000s
+redirdemo
+Child process 4742 exited with status 0
+Real: 0.007s User: 0.002s Sys: 0.000s
+Child process 4743 exited with status 0
+Real: 0.003s User: 0.002s Sys: 0.000s
+redirdemo
+appendedLine
+Child process 4744 exited with status 0
+Real: 0.003s User: 0.001s Sys: 0.000s
+total 40
+-rwxrwxrwx 1 chenj chenj   267 Oct 15 15:20 Makefile
+-rwxrwxrwx 1 chenj chenj     0 Oct 15 15:21 commandErrors.out
+-rwxrwxrwx 1 chenj chenj   935 Oct 15 15:13 exampleCommandLineRun.txt
+-rwxrwxrwx 1 chenj chenj  2807 Oct 15 15:20 makeTestsResults.txt
+-rwxrwxrwx 1 chenj chenj    23 Oct 15 15:21 out1.out
+-rwxrwxrwx 1 chenj chenj  8018 Oct 15 14:44 p3.c
+-rwxrwxrwx 1 chenj chenj 21312 Oct 15 15:13 shell.o
+drwxrwxrwx 1 chenj chenj  4096 Oct 15 15:04 some
+-rwxrwxrwx 1 chenj chenj   308 Oct 15 14:02 test1.sh
+-rwxrwxrwx 1 chenj chenj   638 Oct 15 15:19 test2.sh
+-rwxrwxrwx 1 chenj chenj   282 Oct 15 14:39 testErrors.sh
+-rwxrwxrwx 1 chenj chenj   199 Oct 15 15:02 testRegular.sh
+-rwxrwxrwx 1 chenj chenj    36 Oct 15 15:10 testSegFault.sh
+-r-xr-xr-x 1 chenj chenj    20 Oct 15 13:57 unreadableScript.sh
+Child process 4745 exited with status 0
+Real: 0.045s User: 0.003s Sys: 0.000s
+/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3
+make cleanOut
+make[1]: Entering directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'
+rm *.out
+make[1]: Leaving directory '/mnt/c/Users/chenj/Documents/Cooper Union/Fall-2026/ECE357/ps3/q3'

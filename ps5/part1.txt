@@ -1,0 +1,5 @@
+Problem 1A)
+Memory performance without the PCID will be worse than with the PCID. In the case without the PCID, during a context switch, the CPU flushes all TLB entries keeping kernel-mode PTEs in the TLB. This process has expected TLB misses caussing an increased amount of time required for the CPU to access memory. Conversely, in the case with the PCID, each process has its own PCID associated with its TLB entries. During a context switch, the CPU can preserve entries from both reducing TLB misses thus improving memory performance.
+
+Problem 1B)
+When you echo $? from the shell it should output 135, the code equivalent to a SIGBUS (Bus Error). The game ran normally until a new feature was reached because the pages needed were already loading into memory. However, a new feature requires a page that wasn't loaded from the USB yet causing a page fault. This is due to demand paging in which physical memory is not allocated until it is demanded. The kernel tries to resolve this page fault by loading the page from the USB but it cannot be resolved as the cat has stolen the USB resulting in a SIGBUS.

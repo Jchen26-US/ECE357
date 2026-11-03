@@ -1,0 +1,102 @@
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ece357/ps4/q3$ make tests
+gcc q3.c -o intpipe
+./intpipe 4096 10000
+11 EINTRs
+498 SIGUSR1 handled
+9989 writes of 4096 bytes
+40914944 total bytes written
+Read returned EOF
+1 reads of 5 bytes
+1 reads of 25 bytes
+1 reads of 46 bytes
+1 reads of 53 bytes
+1 reads of 133 bytes
+1 reads of 136 bytes
+1 reads of 149 bytes
+1 reads of 162 bytes
+1 reads of 204 bytes
+1 reads of 263 bytes
+1 reads of 266 bytes
+2 reads of 323 bytes
+1 reads of 324 bytes
+1 reads of 328 bytes
+1 reads of 372 bytes
+1 reads of 374 bytes
+1 reads of 391 bytes
+Writer is done
+1 reads of 432 bytes
+505 SIGUSR1 sent
+1 reads of 519 bytes
+1 reads of 532 bytes
+1 reads of 534 bytes
+73710 reads of 555 bytes
+40914944 total bytes read
+./intpipe 5550 10000
+10 EINTRs
+685 SIGUSR1 handled
+6 writes of 1454 bytes
+30 writes of 4096 bytes
+9954 writes of 5550 bytes
+55376304 total bytes written
+Read returned EOF
+3 reads of 78 bytes
+1 reads of 133 bytes
+7 reads of 211 bytes
+1 reads of 289 bytes
+8 reads of 344 bytes
+7 reads of 422 bytes
+99763 reads of 555 bytes
+55376304 total bytes read
+Writer is done
+687 SIGUSR1 sent
+./intpipe 4096 10000 restart
+0 EINTRs
+492 SIGUSR1 handled
+10000 writes of 4096 bytes
+40960000 total bytes written
+Read returned EOF
+1 reads of 20 bytes
+1 reads of 43 bytes
+1 reads of 62 bytes
+1 reads of 117 bytes
+1 reads of 127 bytes
+1 reads of 129 bytes
+1 reads of 150 bytes
+1 reads of 177 bytes
+1 reads of 192 bytes
+1 reads of 202 bytes
+Writer is done
+1 reads of 208 bytes
+1 reads of 211 bytes
+1 reads of 299 bytes
+493 SIGUSR1 sent
+1 reads of 335 bytes
+1 reads of 337 bytes
+1 reads of 351 bytes
+1 reads of 369 bytes
+1 reads of 396 bytes
+1 reads of 401 bytes
+1 reads of 416 bytes
+1 reads of 446 bytes
+1 reads of 482 bytes
+1 reads of 534 bytes
+1 reads of 549 bytes
+1 reads of 552 bytes
+73789 reads of 555 bytes
+40960000 total bytes read
+./intpipe 5550 10000 restart
+0 EINTRs
+700 SIGUSR1 handled
+4 writes of 1454 bytes
+31 writes of 4096 bytes
+9965 writes of 5550 bytes
+55438542 total bytes written
+Read returned EOF
+3 reads of 78 bytes
+13 reads of 211 bytes
+3 reads of 344 bytes
+4 reads of 422 bytes
+99879 reads of 555 bytes
+55438542 total bytes read
+Writer is done
+704 SIGUSR1 sent

@@ -1,0 +1,16 @@
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ ./test2.sh
+/tmp
+/home/chenj
+Error opening testfile.out: Permission denied
+Child process 5106 exited with status 1
+Real: 0.000s User: 0.000s Sys: 0.000s
+Error executing lssssssss: No such file or directory
+Child process 5107 exited with status 127
+Real: 0.041s User: 0.000s Sys: 0.001s
+Child process 5108 exited with status 0
+Real: 0.002s User: 0.000s Sys: 0.000s
+Error opening testfile.out: Permission denied
+Child process 5109 exited with status 1
+Real: 0.000s User: 0.000s Sys: 0.000s
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ echo $?
+1

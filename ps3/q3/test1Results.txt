@@ -1,0 +1,26 @@
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ ./test1.sh
+Child process 5035 exited with status 0
+Real: 0.004s User: 0.001s Sys: 0.000s
+Child process 5036 exited with status 0
+Real: 0.006s User: 0.000s Sys: 0.002s
+total 52
+-rwxrwxrwx 1 chenj chenj   267 Oct 15 15:20 Makefile
+-rwxrwxrwx 1 chenj chenj   935 Oct 15 15:13 exampleCommandLineRun.txt
+-rwxrwxrwx 1 chenj chenj  4984 Oct 15 15:22 makeTestsResults.txt
+-rwxrwxrwx 1 chenj chenj  8018 Oct 15 14:44 p3.c
+-rwxrwxrwx 1 chenj chenj 21312 Oct 15 15:13 shell.o
+drwxrwxrwx 1 chenj chenj  4096 Oct 15 15:04 some
+-rwxrwxrwx 1 chenj chenj   308 Oct 15 14:02 test1.sh
+-rwxrwxrwx 1 chenj chenj  1363 Oct 15 15:25 test1Results.txt
+-rwxrwxrwx 1 chenj chenj   638 Oct 15 15:19 test2.sh
+-rwxrwxrwx 1 chenj chenj   673 Oct 15 15:25 test2Results.txt
+-rwxrwxrwx 1 chenj chenj   282 Oct 15 14:39 testErrors.sh
+-rwxrwxrwx 1 chenj chenj   199 Oct 15 15:02 testRegular.sh
+-rwxrwxrwx 1 chenj chenj    36 Oct 15 15:10 testSegFault.sh
+-rwxrwxrwx 1 chenj chenj    18 Oct 15 15:26 testfile.out
+-rwxrwxrwx 1 chenj chenj    18 Oct 15 15:26 testfile2.out
+-r-xr-xr-x 1 chenj chenj    20 Oct 15 13:57 unreadableScript.sh
+Child process 5037 exited with status 0
+Real: 0.028s User: 0.000s Sys: 0.003s
+chenj@PowerspecG451:/mnt/c/Documents and Settings/chenj/Cooper/Fall-2026/ECE357/ps3/q3$ echo $?
+17

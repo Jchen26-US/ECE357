@@ -1,0 +1,11 @@
+1A)
+When you try to type input with tabs into a program like cat an interupt signal is sent this is because tab and ^I have the same ASCII value.
+The TAB key does not result in the same interuption either due to vi having signal handling or ignore signals such as SIGINT. The other explanation is that vi changes the terminal settings disabling the ISIG flag with characters such as the interrupt character no longer being converted to signals.
+1B)
+when sa_flags = 0, SIGFPIE is blocked during the handler, and then h() divides by zero again caused another SIGFPE while SIGFPE is blocked. The Result is termination with a floating point exception. When sa_flags = SA_NODEFER, every new signal creates calls h() exhausting the stack and eventually a SIGSEGV.
+1C)
+Signal 40 is a real-time signal. Thus, all three instances of the signals sent from process A are queued while blocked by process B. When process B unblocks the signal, the handler is executed 3 times, once for each instance within the queue.
+1D)
+ii and iii can be awoken by a signal before satisfaction. ii  is waiting for a keyboard input and iii is waiting for a child process both of which can be interupted while they are waiting for their relevant events to end. i is not interruptible as it waits for the event (writes to IO) and the signal remains pending.
+1E)
+The hardware-level mechanism is an inter-processor interrupt to CPU 1. This is done so that CPU 1 enters kernel mode s the kernel can recognize the pending signals including SIGUSR2 and send it to process B.

@@ -1,0 +1,19 @@
+2A)
+A named pipe can be created using mknod() or mkfifo() system calls as follows:
+mknod("/tmp/namedpipe", S_IFIFO | 0600, 0);
+Alternataively, the shell commnad mkfifo can be used.
+2B)
+Namedpipes allow a process to use the open() syscall to access a pipe which is not possible with unnamed pipes. This allows multiple processes to communicate through a common path.
+2C)
+logs from wsl terminal 1:
+chenj@PowerspecG451:~/ECE357/ps4p2$ mkfifo namedPipe
+chenj@PowerspecG451:~/ECE357/ps4p2$ ls -l
+total 0
+prw-r--r-- 1 chenj chenj 0 Oct 20 02:39 namedPipe
+chenj@PowerspecG451:~/ECE357/ps4p2$ cat namedPipe
+Entered from Terminal 2
+chenj@PowerspecG451:~/ECE357/ps4p2$
+
+logs from wsl terminal 2
+chenj@PowerspecG451:~/ECE357/ps4p2$ echo "Entered from Terminal 2" > namedPipe
+chenj@PowerspecG451:~/ECE357/ps4p2$
